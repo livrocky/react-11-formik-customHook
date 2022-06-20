@@ -12,9 +12,9 @@ export default function AddForm() {
       city: '',
     },
     validationSchema: Yup.object({
-      image: Yup.string().required('Required'),
-      price: Yup.number().min(2, 'Must be a double digit or more').max(1000000, 'The number is too long').required('Required'),
-      desc: Yup.string().min(10, 'Must at least be 10 characters').required('Required'),
+      image: Yup.string().required('Image URL is required'),
+      price: Yup.number().min(2, 'Must be a double digit or more').max(1000000, 'The number is too long').required('The price is required'),
+      desc: Yup.string().min(10, 'Must at least be 10 characters').required('The description is required'),
     }),
     onSubmit: (values) => {
       console.log(values);
