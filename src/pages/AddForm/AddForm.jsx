@@ -13,14 +13,14 @@ export default function AddForm() {
     },
     validationSchema: Yup.object({
       image: Yup.string().required('Required'),
-      price: Yup.number().min(2, 'Must be a double digit or more').required('Required'),
+      price: Yup.number().min(2, 'Must be a double digit or more').max(1000000, 'The number is too long').required('Required'),
       desc: Yup.string().min(10, 'Must at least be 10 characters').required('Required'),
     }),
     onSubmit: (values) => {
       console.log(values);
     },
   });
-  console.log(formik.touched);
+  //   console.log(formik.touched);
   return (
     <div className='addForm'>
       <header className={css.header}>
