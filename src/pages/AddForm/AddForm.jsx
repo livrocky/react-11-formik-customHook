@@ -15,6 +15,7 @@ export default function AddForm() {
       image: Yup.string().required('Image URL is required'),
       price: Yup.number().min(2, 'Must be a double digit or more').max(1000000, 'The number is too long').required('The price is required'),
       desc: Yup.string().min(10, 'Must at least be 10 characters').required('The description is required'),
+      //   city: Yup.required('The city is required'),
     }),
     onSubmit: (values) => {
       console.log(values);
@@ -55,6 +56,9 @@ export default function AddForm() {
           </label>
           <br></br>
           <select name='city' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.city}>
+            <option disabled='disabled' value=''>
+              SELECT
+            </option>
             <option value='kaunas'>Kaunas</option>
             <option value='vilnius'>Vilnius</option>
             <option value='klaipeda'>Klaipeda</option>
