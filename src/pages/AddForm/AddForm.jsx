@@ -32,15 +32,28 @@ export default function AddForm() {
       <h2 className={css.subtitle}>Add Property</h2>
       <form onSubmit={formik.handleSubmit}>
         <div className={css.container}>
+          <label htmlFor='image'>
+            <b>Img</b>
+          </label>
           <input type='text' name='image' placeholder='Image' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.image} />
           {formik.touched.image && formik.errors.image ? <p className={css.error}>{formik.errors.image}</p> : null}
 
+          <label htmlFor='price'>
+            <b>Price, EUR</b>
+          </label>
           <input type='number' name='price' placeholder='Price' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.price} />
           {formik.touched.price && formik.errors.price ? <p className={css.error}>{formik.errors.price}</p> : null}
 
+          <label htmlFor='desc'>
+            <b>Description</b>
+          </label>
           <textarea name='desc' cols='30' rows='4' placeholder='Anything you would like to say?' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.desc}></textarea>
           {formik.touched.desc && formik.errors.desc ? <p className={css.error}>{formik.errors.desc}</p> : null}
 
+          <label htmlFor='city'>
+            <b>City</b>
+          </label>
+          <br></br>
           <select name='city' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.city}>
             <option value='kaunas'>Kaunas</option>
             <option value='vilnius'>Vilnius</option>
