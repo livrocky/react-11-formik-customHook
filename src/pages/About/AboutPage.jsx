@@ -1,23 +1,23 @@
 // parisisuti visus useriu is https://jsonplaceholder.typicode.com/users
-import { useState } from 'react';
-import { useEffect } from 'react';
-import axios from 'axios';
+
+import useResource from '../../hooks/useResource';
 // panaudoti useResource
 // ir atvazduoti ul saraso pavidalu
 
 function AboutPage() {
-  const [userssData, setUserssData] = useState([]);
+  const [usersData, setUsersData] = useResource('https://jsonplaceholder.typicode.com/users');
 
-  async function getUsers() {
-    const { data } = await axios.get('https://jsonplaceholder.typicode.com/users');
-    console.log('data ===', data);
-    setUserssData(data);
-  }
+  return (
+    <div>
+      <h1>About US</h1>
 
-  useEffect(() => {
-    getUsers();
-  }, []);
-  return <div>AboutPage</div>;
+      {usersData.map((uObj, i) => (
+        <ul key={i}>
+          <li> {uObj.name} </li>
+        </ul>
+      ))}
+    </div>
+  );
 }
 
 export default AboutPage;
