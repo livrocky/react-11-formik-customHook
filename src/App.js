@@ -7,7 +7,6 @@ import HomePage from './pages/Home/HomePage';
 function App() {
   return (
     <div className='App'>
-      <h1>Heloo again world</h1>
       <Switch>
         <Route exact path='/'>
           <HomePage />
