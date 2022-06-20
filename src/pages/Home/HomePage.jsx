@@ -1,22 +1,12 @@
 // import css from './HomePage.module.css'
 // https://robust-safe-crafter.glitch.me/
 
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import useResource from './../../hooks/useResource';
 
 // parisiusti ir iskonsolinti duomenis
 function HomePage() {
-  const [propertiesData, setPropertiesData] = useState([]);
+  const [propertiesData, setPropertiesData] = useResource('/db.json');
 
-  async function getProperties() {
-    const { data } = await axios.get('/db.json');
-    console.log('data ===', data);
-    setPropertiesData(data);
-  }
-
-  useEffect(() => {
-    getProperties();
-  }, []);
   return (
     <div>
       <h1>Properties</h1>
