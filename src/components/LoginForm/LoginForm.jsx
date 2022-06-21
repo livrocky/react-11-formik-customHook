@@ -2,12 +2,15 @@ import css from './LoginForm.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { myFetch } from '../../utils';
+import { useContext } from 'react';
+import { AuthContext } from '../../store/AuthContext';
 
 const initValues = {
   email: '',
   password: '',
 };
 function LoginForm() {
+  const { login } = useContext(AuthContext);
   const formik = useFormik({
     initialValues: initValues,
     validationSchema: Yup.object({
@@ -15,11 +18,18 @@ function LoginForm() {
       password: Yup.string().min(4, 'Maziausiai 4 simboliai').max(20).required(),
     }),
     onSubmit: async (values) => {
-      // fetch or axios i https://reqres.in/api/login
+      // fetch or axios https://reqres.in/api/login
       // ir iskonsolinti atsakyma
-      console.log('submiting values ===', values);
+      // console.log('submiting values ===', values);
       const result = await myFetch('https://reqres.in/api/login', 'POST', values);
-      console.log('result===', result);
+      if (!result.token) {
+        console.log('klaida');
+        return;
+      }
+      // klaidos nera ir turim token
+      // login() is kontexto ir paduosim token
+      login(result.token);
+      console.log('result ===', result);
     },
   });
 
