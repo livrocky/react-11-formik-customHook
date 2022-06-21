@@ -1,6 +1,7 @@
 import css from './LoginForm.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { myFetch } from '../../utils';
 
 const initValues = {
   email: '',
@@ -11,10 +12,14 @@ function LoginForm() {
     initialValues: initValues,
     validationSchema: Yup.object({
       email: Yup.string().email('Patikrinkite savo email').required(),
-      password: Yup.string().min(4, 'Maziausiai 4 simboliai').max(7).required(),
+      password: Yup.string().min(4, 'Maziausiai 4 simboliai').max(20).required(),
     }),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      // fetch or axios i https://reqres.in/api/login
+      // ir iskonsolinti atsakyma
       console.log('submiting values ===', values);
+      const result = await myFetch('https://reqres.in/api/login', 'POST', values);
+      console.log('result===', result);
     },
   });
 
