@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import css from './Header.module.css';
 
 function Header() {
+  // useContext ir pagal isLoggedin rodom arba nerodom
   return (
     <header className={css.header}>
       <nav>
@@ -13,6 +14,9 @@ function Header() {
         </NavLink>
         <NavLink className={css.navLink} to='/register'>
           Register
+        </NavLink>
+        <NavLink className={css.navLink} to='/register'>
+          Logout
         </NavLink>
       </nav>
     </header>

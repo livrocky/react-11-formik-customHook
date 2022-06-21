@@ -1,6 +1,7 @@
 import { createContext, useState } from 'react';
 
 export const AuthContext = createContext({
+  register: () => {},
   login: () => {},
   logout: () => {},
   token: '',
@@ -13,14 +14,20 @@ function AuthProvider(props) {
   //infered value / calculated value
   const isUserLoggedIn = !token ? false : true;
 
+  function register(userToken) {
+    setToken(userToken);
+  }
+
   function login(userToken) {
     setToken(userToken);
   }
+
   function logout() {
     setToken(null);
   }
 
   const ctx = {
+    register,
     login,
     logout,
     isUserLoggedIn,
