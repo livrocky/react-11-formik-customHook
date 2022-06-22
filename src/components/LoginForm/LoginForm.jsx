@@ -6,10 +6,10 @@ import { useContext } from 'react';
 import { AuthContext } from '../../store/AuthContext';
 
 const initValues = {
-  email: '',
-  password: '',
+  email: 'eve.holt@reqres.in',
+  password: 'pistol',
 };
-function LoginForm() {
+function LoginForm(props) {
   const { login } = useContext(AuthContext);
   const formik = useFormik({
     initialValues: initValues,
@@ -29,6 +29,7 @@ function LoginForm() {
       // klaidos nera ir turim token
       // login() is kontexto ir paduosim token
       login(result.token);
+      props.onSuccessLogin();
       console.log('result ===', result);
     },
   });

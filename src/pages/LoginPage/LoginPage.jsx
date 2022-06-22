@@ -1,10 +1,13 @@
 // import css from './LoginPage.module.css'
 
+import { useHistory } from 'react-router-dom';
 import LoginForm from '../../components/LoginForm/LoginForm';
 
 function LoginPage(props) {
+  const history = useHistory();
   function handleSuccessLogin() {
     // TODO: redirect to about
+    history.replace('/about');
   }
 
   return (
