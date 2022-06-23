@@ -50,16 +50,15 @@ function LoginForm(props) {
         errorMsg={formik.touched.email && formik.errors.email}
       />
 
-      <input
+      <Input
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.password}
-        errorMsg={formik.touched.password && formik.errors.password}
         name='password'
         type='password'
         placeholder='Your password'
+        errorMsg={formik.touched.password && formik.errors.password}
       />
-      <Input type='textarea' />
 
       <button type='submit'>Login</button>
     </form>
