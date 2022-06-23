@@ -1,9 +1,10 @@
-import css from './LoginForm.module.css';
+// import css from './LoginForm.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { myFetch } from '../../utils';
 import { useContext } from 'react';
 import { AuthContext } from '../../store/AuthContext';
+import Input from '../UI/Input/Input';
 
 const initValues = {
   email: 'eve.holt@reqres.in',
@@ -39,12 +40,27 @@ function LoginForm(props) {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} className={formik.touched.email && formik.errors.email ? css.errorInput : ''} name='email' type='text' placeholder='Your email' />
+      <Input
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.email}
+        name='email'
+        type='text'
+        placeholder='Your email'
+        errorMsg={formik.touched.email && formik.errors.email}
+      />
 
-      {formik.touched.email && formik.errors.email && <p className={css.errorMsg}>{formik.errors.email}</p>}
+      <input
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.password}
+        errorMsg={formik.touched.password && formik.errors.password}
+        name='password'
+        type='password'
+        placeholder='Your password'
+      />
+      <Input type='textarea' />
 
-      <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.password} className={formik.touched.password && formik.errors.password ? css.errorInput : ''} name='password' type='password' placeholder='Your password' />
-      {formik.touched.password && formik.errors.password && <p className={css.errorMsg}>{formik.errors.password}</p>}
       <button type='submit'>Login</button>
     </form>
   );
