@@ -1,0 +1,32 @@
+.btn {
+    border: none;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  /* variant */
+  .primary {
+    background-color: #008cba;
+    padding: 40px;
+
+  }
+  .secondary {
+    background-color: #e7e7e7;
+    color: #333;
+  }
+  .danger {
+    background-color: tomato;
+  }
+  
+  /* size */
+  .large {
+    font-size: 22px;
+  }
+  .small {
+    font-size: 12px;
+  }
